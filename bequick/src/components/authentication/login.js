@@ -74,11 +74,13 @@ export default function Login() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center', }}>
               <TextField
                 margin="normal"
                 required
-                fullWidth
+                style = {{width: '140%'}}
                 id="email"
                 label="Email Address"
                 name="email"
@@ -88,17 +90,14 @@ export default function Login() {
               <TextField
                 margin="normal"
                 required
-                fullWidth
+                style = {{width: '140%'}}
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
               />
-              <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              />
+         
               <Button
                 type="submit"
                 fullWidth
@@ -107,7 +106,9 @@ export default function Login() {
               >
                 Sign In
               </Button>
-              <Grid container>
+              <Grid container sx={{  display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center', }}>
                 <Grid item xs>
                   <Link href="#" variant="body2">
                     Forgot password?
