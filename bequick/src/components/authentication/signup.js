@@ -1,15 +1,13 @@
 import * as React from 'react';
-import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Stepper from '@mui/material/Stepper';
@@ -76,12 +74,19 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid container component="main" sx={{display: 'flex',
+      flexDirection:'row',
+      justifyContent:'center',
+                      alignItems: 'center',
+                      mt:'10vh',
+                      borderRadius:'20px'
+              
+              }} >
         <CssBaseline />
         <Grid
           item
           xs={false}
-          sm={4}
+          sm={3}
           md={6}
           sx={{
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
@@ -90,16 +95,21 @@ export default function Login() {
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            height: '80vh',
+            borderTopLeftRadius:'20px',
+            borderBottomLeftRadius:'20px',
           }}
         />
-        <Grid item xs={12} sm={8} md={6} component={Paper} elevation={4} square>
+        <Grid item xs={12} sm={7} md={4} component={Paper} sx={{ height: '80vh' ,borderTopRightRadius:'20px',
+            borderBottomRightRadius:'20px',}}elevation={4} >
           <Box
             sx={{
-              my: 4,
-              mx: 4,
+              my: 2,
+              mx: 2,
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              
             }}
           >
             
@@ -132,51 +142,55 @@ export default function Login() {
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
             
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, display: 'flex',
+          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 0.5, display: 'flex',
               flexDirection: 'column',
               alignItems: 'center', }}>
                 {activeStep ===0 ? (
         // JSX to render when the condition is true
-        <Box sx={{ mt: 1, display: 'flex',
+        <Box sx={{ mt: 0.5, display: 'flex',
         flexDirection: 'column',
         alignItems: 'center', }}>
             
             <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 id="name"
                 label="Name"
                 name="name"
                 autoComplete="name"
                 autoFocus
+                size="small"
               />
                <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 id="contact"
                 label="Contact"
                 name="Contact"
                 autoComplete="Contact"
+                size="small"
               />
               <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                size="small"
               />
                  <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 id="city"
                 label="City"
                 name="city"
                 autoComplete="city"
+                size="small"
               />
              
              
@@ -189,62 +203,54 @@ export default function Login() {
              <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 id="username"
                 label="Username"
                 name="username"
                 autoComplete="Username"
                 autoFocus
+                size="small"
               />
               <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                size="small"
               />
                <TextField
                 margin="normal"
                 required
-                style = {{width: '160%'}}
+                style = {{width: '120%'}}
                 name="cpassword"
                 label="Confirm Password"
                 type="password"
                 id="cpassword"
                 autoComplete="confirm-password"
+                size="small"
               />
               
               <Grid container sx={{  display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center', }}>
+              alignItems: 'center',pt: 2 }}>
                 <Grid item>
                   <Link href="#" variant="body2">
                     {"Don't have an account? Sign Up"}
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+             
               </Box>
       )}
              
               
             </Box>
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+            </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
             <Button
               color="inherit"
               disabled={activeStep === 0}
@@ -257,9 +263,10 @@ export default function Login() {
             
 
             
-              {activeStep === 0 ?<Button onClick={handleNext}>Next</Button> : <Button
+              {activeStep === 0 ?<Button variant="contained" onClick={handleNext}>Next</Button> : <Button
                 type="submit"
                 variant="contained"
+                onClick={handleNext}
               >
                 Sign In
               </Button>}
