@@ -3,8 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
+
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -42,13 +41,19 @@ export default function Login() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      
+      <Grid container component="main" sx={{display: 'flex',
+      flexDirection:'row',
+      justifyContent:'center',
+                      alignItems: 'center',
+                      mt:'10vh',
+                      borderRadius:'20px'}}>
         <CssBaseline />
         <Grid
           item
           xs={false}
-          sm={4}
-          md={7}
+          sm={5}
+          md={6}
           sx={{
             backgroundImage: 'url(https://source.unsplash.com/random?wallpapers)',
             backgroundRepeat: 'no-repeat',
@@ -56,9 +61,13 @@ export default function Login() {
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
             backgroundSize: 'cover',
             backgroundPosition: 'center',
+            height: '80vh',
+            borderTopLeftRadius:'20px',
+            borderBottomLeftRadius:'20px',
           }}
         />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        <Grid item xs={10} sm={5} md={4} component={Paper} elevation={6} square sx={{ height: '80vh' ,borderTopRightRadius:'20px',
+            borderBottomRightRadius:'20px',}}>
           <Box
             sx={{
               my: 8,
@@ -66,6 +75,7 @@ export default function Login() {
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
+              
             }}
           >
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
@@ -80,29 +90,31 @@ export default function Login() {
               <TextField
                 margin="normal"
                 required
-                style = {{width: '140%'}}
+                style = {{width: '120%'}}
                 id="email"
                 label="Email Address"
                 name="email"
                 autoComplete="email"
                 autoFocus
+                size="small"
               />
               <TextField
                 margin="normal"
                 required
-                style = {{width: '140%'}}
+                style = {{width: '120%'}}
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                size="small"
               />
          
               <Button
                 type="submit"
                 fullWidth
                 variant="contained"
-                sx={{ mt: 3, mb: 2 }}
+                sx={{ width: '120%', mt: 3, mb: 2 }}
               >
                 Sign In
               </Button>
@@ -120,7 +132,7 @@ export default function Login() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
+              
             </Box>
           </Box>
         </Grid>
