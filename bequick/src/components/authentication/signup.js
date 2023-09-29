@@ -249,18 +249,7 @@ export default function Login() {
              
               
             </Box>
-          
-          
-          
-          
-        
-          
-          
-          
-          
-          
-          
-          </Typography>
+            </Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
             <Button
               color="inherit"
@@ -277,6 +266,7 @@ export default function Login() {
               {activeStep === 0 ?<Button variant="contained" onClick={handleNext}>Next</Button> : <Button
                 type="submit"
                 variant="contained"
+                onClick={handleNext}
               >
                 Sign In
               </Button>}
