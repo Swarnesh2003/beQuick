@@ -8,7 +8,7 @@ import Dashboard from './components/auctioneer/dashboard'
 import Newauction from './components/auctioneer/newauction'
 import Ongoingauction from './components/auctioneer/ongoingauction'
 import Closedauction from './components/auctioneer/closedauction'
-import Transaction from './components/auctioneer/Transaction'
+import Transaction from './components/auctioneer/transaction'
 
 
 function App() {

@@ -12,7 +12,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import HourglassEmptyRoundedIcon from '@mui/icons-material/HourglassEmptyRounded';
 import DownloadDoneRoundedIcon from '@mui/icons-material/DownloadDoneRounded';
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
-
+import {Link, Outlet} from "react-router-dom";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -79,17 +79,17 @@ export default function Dashboard() {
   };
 
   return (
-    <Box>
-        <Box sx={{height:'9vh',marginBottom:0.5,boxShadow: '0px 4px 6px rgb(236, 249, 255)', display:'flex', alignItems:'center'}}>
+    <Box sx={{height:'97vh', bgcolor: 'rgb(236, 249, 255)'}}>
+        <Box sx={{height:'9vh',marginBottom:0.5,boxShadow: '0px 4px 6px rgb(236, 249, 255)',bgcolor: 'white' , display:'flex', alignItems:'center'}}>
             <Box sx={{display:'flex', alignItems:'center', marginRight:2}}>
             <Box sx={{display:'flex', alignItems:'center'}}>
             <img 
             src="..\images\logo.png"
             alt="Auction"
-            style={{width:'12vw',height:'auto', marginLeft:30,marginRight:10}} />
+            style={{width:'12vw',height:'auto', marginLeft:25,marginRight:10}} />
             </Box>
-            <Box sx={{marginLeft:6,display:'flex', alignItems:'center'}}>
-              <Typography >Dashboard</Typography>
+            <Box sx={{marginLeft:6, display:'flex', alignItems:'center'}}>
+              <Typography sx={{color:'#454545',fontSize:'115%'}} >Dashboard</Typography>
             </Box>
             </Box>
 
@@ -101,13 +101,13 @@ export default function Dashboard() {
            
             <Box sx={{display:'flex', alignItems:'center', marginRight:2}}>
             <Avatar sx={{width:'2.5vw', height:'auto'}} alt="Remy Sharp" src="..\images\images.jfif" />
-            <Typography sx={{marginLeft: 1,marginRight:0.7, fontSize:15}}>Swarnesh</Typography>
+            <Typography sx={{marginLeft: 1,marginRight:0.7, fontSize:15,color:'#454545'}}>Swarnesh</Typography>
             <ArrowDropDownIcon color="primary" />
             </Box>
            </Box>
         </Box>
     <Box
-      sx={{ flexGrow: 3, bgcolor: 'rgb(236, 249, 255)', display: 'flex', height: '110vh' }}
+      sx={{ flexGrow: 3, bgcolor: 'rgb(236, 249, 255)', display: 'flex', height: '89vh' }}
     >
       <Tabs 
         orientation="vertical"
@@ -117,14 +117,17 @@ export default function Dashboard() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider',width:'16vw',bgcolor: 'white' }}
       >
-      <LinkTab sx={{marginTop:'3vh',textTransform: 'none'}} label={
-        <div style={{display:'flex', alignItems: 'center', position:'absolute', left:'1.5vw'}}>
+        <Tab sx={{marginTop:'3vh',textTransform: 'none'}}
+          label={<div style={{display:'flex', alignItems: 'center', position:'absolute', left:'1.5vw'}}>
           
-            <GavelIcon /> {/* Replace with your desired icon */}
-          
-          <Typography sx={{marginLeft:2, fontSize:'115%'}}>New Auction</Typography>
-        </div>
-      } href='#'/>
+          <GavelIcon /> {/* Replace with your desired icon */}
+        
+        <Typography sx={{marginLeft:2, fontSize:'115%'}}>New Auction</Typography>
+      </div>}
+          component={Link}
+          to="/auctioneer/dashboard/newauction" // Specify the target route
+        />
+     
       <LinkTab sx={{textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center',  position:'absolute',left:'1.5vw'}}>
           
@@ -132,7 +135,7 @@ export default function Dashboard() {
           
             <Typography sx={{marginLeft:2, fontSize:'115%'}}>Ongoing Auction</Typography>
         </div>
-      } href='#'/>
+      } href='/auctioneer/dashboard/ongoingauction'/>
       <LinkTab sx={{textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center', position:'absolute',left:'1.5vw'}}>
           
@@ -140,7 +143,7 @@ export default function Dashboard() {
           
             <Typography sx={{marginLeft:2, fontSize:'115%'}}>Closed Auctions</Typography>
         </div>
-      } href='#'/>
+      } href='/auctioneer/dashboard/closedauction'/>
         
         
         <LinkTab  sx={{textTransform: 'none'}}label={
@@ -150,9 +153,10 @@ export default function Dashboard() {
           
             <Typography sx={{marginLeft:2, fontSize:'115%'}}>Transactions</Typography>
         </div>
-      } href='#'/>
+      } href='/auctioneer/dashboard/Transaction'/>
       </Tabs>
-
+      <Box sx={{ width:'80vw', m:2}}><Outlet /></Box>
+     
     </Box>
     </Box>
   );
