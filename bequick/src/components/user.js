@@ -49,7 +49,7 @@ export default function User(){
                 <Typography sx={{fontSize:'20px'}}>Explore both roles and find your passion!</Typography>
             </Box>
             <Box>
-            <a href="/auctioneer"><Button sx={{m:3,height:45,width:110}}  variant="contained">Auctioneer</Button></a> 
+            <a href="/auctioneer/dashboard"><Button sx={{m:3,height:45,width:110}}  variant="contained">Auctioneer</Button></a> 
             <a href="/bidder"><Button sx={{m:3,height:45,width:110}} variant="contained">Bidder</Button></a>
             </Box>
             <Copyright sx={{ mt: 5 }} />
