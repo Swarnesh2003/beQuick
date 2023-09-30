@@ -13,18 +13,6 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 
 const defaultTheme = createTheme();
@@ -66,7 +54,12 @@ export default function Login() {
             borderTopLeftRadius:'20px',
             borderBottomLeftRadius:'20px',
           }}
-        />
+        ><img 
+        src=".\images\appviewx2.png"
+        alt="Auction"
+        style={{width:'80px',height:'auto', margin:5}}
+
+      /></Grid>
         <Grid item xs={10} sm={5} md={4} component={Paper} elevation={6} square sx={{ height: '80vh' ,borderTopRightRadius:'20px',
             borderBottomRightRadius:'20px',}}>
           <Box

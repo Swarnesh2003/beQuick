@@ -2,8 +2,20 @@ import { Typography } from '@mui/material';
 import React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-
-
+import Link from '@mui/material/Link';
+function Copyright(props) {
+    return (
+      <Typography variant="body2" color="text.secondary" align="center" {...props}>
+        {'Copyright © '}
+        <Link color="inherit" href="https://www.appviewx.com/">
+          Appviewx
+        </Link>{' '}
+        {new Date().getFullYear()}
+        {'.'}
+      </Typography>
+    );
+  }
+  
 export default function User(){
     const myStyle={
         backgroundColor:'white',
@@ -29,7 +41,6 @@ export default function User(){
         src=".\images\auction.png"
         alt="Auction"
         style={{width:'125px',height:'auto'}}
-
       />
                 <Typography sx={{fontSize:'20px'}}  >
                 Lead auctions as an auctioneer or bid strategically  
@@ -41,7 +52,13 @@ export default function User(){
             <a href="/auctioneer"><Button sx={{m:3,height:45,width:110}}  variant="contained">Auctioneer</Button></a> 
             <a href="/bidder"><Button sx={{m:3,height:45,width:110}} variant="contained">Bidder</Button></a>
             </Box>
-            
+            <Copyright sx={{ mt: 5 }} />
+            <img 
+        src=".\images\appviewx2.png"
+        alt="Auction"
+        style={{width:'60px',height:'auto', margin:5}}
+
+      />
           
         </Box>
     )

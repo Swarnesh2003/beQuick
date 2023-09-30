@@ -99,7 +99,12 @@ export default function Login() {
             borderTopLeftRadius:'20px',
             borderBottomLeftRadius:'20px',
           }}
-        />
+          > <img 
+          src=".\images\appviewx2.png"
+          alt="Auction"
+          style={{width:'80px',height:'auto', margin:5}}
+  
+        /></Grid>
         <Grid item xs={12} sm={7} md={4} component={Paper} sx={{ height: '80vh' ,borderTopRightRadius:'20px',
             borderBottomRightRadius:'20px',}}elevation={4} >
           <Box
