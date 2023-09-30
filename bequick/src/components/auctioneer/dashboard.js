@@ -89,7 +89,7 @@ export default function Dashboard() {
             style={{width:'12vw',height:'auto', marginLeft:30,marginRight:10}} />
             </Box>
             <Box sx={{marginLeft:6,display:'flex', alignItems:'center'}}>
-              <Typography >Dashboard</Typography>
+              <Typography sx={{color:'#454545'}}>Dashboard</Typography>
             </Box>
             </Box>
 
@@ -101,7 +101,7 @@ export default function Dashboard() {
            
             <Box sx={{display:'flex', alignItems:'center', marginRight:2}}>
             <Avatar sx={{width:'2.5vw', height:'auto'}} alt="Remy Sharp" src="..\images\images.jfif" />
-            <Typography sx={{marginLeft: 1,marginRight:0.7, fontSize:15}}>Swarnesh</Typography>
+            <Typography sx={{marginLeft: 1,marginRight:0.7, fontSize:15,color:'#454545'}}>Swarnesh</Typography>
             <ArrowDropDownIcon color="primary" />
             </Box>
            </Box>
