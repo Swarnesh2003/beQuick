@@ -89,19 +89,19 @@ export default function Dashboard() {
             style={{width:'12vw',height:'auto', marginLeft:30,marginRight:10}} />
             </Box>
             <Box sx={{marginLeft:6,display:'flex', alignItems:'center'}}>
-              <Typography >Dashboard</Typography>
+              <Typography sx={{fontSize:'125%'}} >Dashboard</Typography>
             </Box>
             </Box>
 
             <Box sx={{position:'absolute', right:0, marginRight:2, display:'flex', flexDirection:'row', alignItems:'center'}}>
-              <Box sx={{display:'flex', alignItems:'center' , marginRight:4}}> <img 
+              <Box sx={{display:'flex', alignItems:'center' , marginRight:'4vw'}}> <img 
             src="..\images\notification.png"
             alt="Auction"
             style={{width:'1.5vw',height:'auto'}} /></Box>
            
             <Box sx={{display:'flex', alignItems:'center', marginRight:2}}>
             <Avatar sx={{width:'2.5vw', height:'auto'}} alt="Remy Sharp" src="..\images\images.jfif" />
-            <Typography sx={{marginLeft: 1,marginRight:0.7, fontSize:15}}>Swarnesh</Typography>
+            <Typography sx={{marginLeft: 1,marginRight:0.7, fontSize:"110%"}}>Swarnesh</Typography>
             <ArrowDropDownIcon color="primary" />
             </Box>
            </Box>
@@ -117,38 +117,38 @@ export default function Dashboard() {
         aria-label="Vertical tabs example"
         sx={{ borderRight: 1, borderColor: 'divider',width:'16vw',bgcolor: 'white' }}
       >
-      <LinkTab sx={{marginTop:'3vh'}} label={
+      <LinkTab sx={{marginTop:'3vh',textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center', position:'absolute', left:'1.5vw'}}>
           
             <GavelIcon /> {/* Replace with your desired icon */}
           
-          <Typography sx={{marginLeft:2, fontSize:12}}>New Auction</Typography>
+          <Typography sx={{marginLeft:2, fontSize:'115%'}}>New Auction</Typography>
         </div>
       } href='#'/>
-      <LinkTab label={
+      <LinkTab sx={{textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center',  position:'absolute',left:'1.5vw'}}>
           
             <HourglassEmptyRoundedIcon /> {/* Replace with your desired icon */}
           
-            <Typography sx={{marginLeft:2, fontSize:12}}>Ongoing Auction</Typography>
+            <Typography sx={{marginLeft:2, fontSize:'115%'}}>Ongoing Auction</Typography>
         </div>
       } href='#'/>
-      <LinkTab label={
+      <LinkTab sx={{textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center', position:'absolute',left:'1.5vw'}}>
           
             < DownloadDoneRoundedIcon /> {/* Replace with your desired icon */}
           
-            <Typography sx={{marginLeft:2, fontSize:12}}>Closed Auctions</Typography>
+            <Typography sx={{marginLeft:2, fontSize:'115%'}}>Closed Auctions</Typography>
         </div>
       } href='#'/>
         
         
-        <LinkTab label={
+        <LinkTab  sx={{textTransform: 'none'}}label={
         <div style={{display:'flex',alignItems: 'center', position:'absolute', left:'1.5vw'}}>
           
             < AccountBalanceRoundedIcon /> {/* Replace with your desired icon */}
           
-            <Typography sx={{marginLeft:2, fontSize:12}}>Transactions</Typography>
+            <Typography sx={{marginLeft:2, fontSize:'115%'}}>Transactions</Typography>
         </div>
       } href='#'/>
       </Tabs>
