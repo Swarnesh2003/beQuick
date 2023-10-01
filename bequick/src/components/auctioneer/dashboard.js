@@ -159,7 +159,7 @@ export default function Dashboard() {
       } component={Link}
       to="/auctioneer/dashboard/Transaction"  />
       </Tabs>
-      <Box sx={{ width:'80vw', m:2}}><Outlet /></Box>
+      <Box sx={{ width:'82vw', m:2, overflow:"auto"}}><Outlet /></Box>
      
     </Box>
     </Box>
