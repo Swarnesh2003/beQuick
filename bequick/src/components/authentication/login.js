@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+
+
 
 
 
@@ -25,7 +29,18 @@ export default function Login() {
       email: data.get('email'),
       password: data.get('password'),
     });
-    window.location.replace('/user')
+    var email= data.get('email')
+    var password= data.get('password')
+    axios.post('http://localhost:8000/login',
+    {
+        user: email,
+        pass: password
+    }
+    ).then(function(response){
+        console.log(response)
+        window.location.replace('/user')
+    })
+   
   };
 
   return (

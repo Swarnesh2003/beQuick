@@ -149,14 +149,15 @@ export default function Dashboard() {
       to="/auctioneer/dashboard/closedauction"  />
         
         
-        <LinkTab  sx={{textTransform: 'none'}}label={
+        <Tab  sx={{textTransform: 'none'}}label={
         <div style={{display:'flex',alignItems: 'center', position:'absolute', left:'1.5vw'}}>
           
             < AccountBalanceRoundedIcon /> {/* Replace with your desired icon */}
           
             <Typography sx={{marginLeft:2, fontSize:'115%'}}>Transactions</Typography>
         </div>
-      } href='/auctioneer/dashboard/Transaction'/>
+      } component={Link}
+      to="/auctioneer/dashboard/Transaction"  />
       </Tabs>
       <Box sx={{ width:'82vw', m:2, overflow:"auto"}}><Outlet /></Box>
      

@@ -14,6 +14,9 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 
+import axios from 'axios';
+axios.defaults.withCredentials = true;
+
 const steps = ['', ''];
 
 function Copyright(props) {
@@ -87,11 +90,26 @@ export default function Signup() {
     setUsername(data2.get('username'))
     if(pw==cpw){
       setPassword(pw)
+      axios.post('http://localhost:8000/signup',
+      {
+          name1: name,
+          contact1: contact,
+          email1:email,
+          city1:city,
+          username1:data2.get('username'),
+          password1:data2.get('password')
+  
+      }
+      ).then(function(response){
+          console.log(response)
+          window.location.replace('/user')
+      })
     }
     else{
       window.alert('password mismatch')
     }
 
+   
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
