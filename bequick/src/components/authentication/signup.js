@@ -35,18 +35,21 @@ function Copyright(props) {
 
 const defaultTheme = createTheme();
 
-export default function Login() {
+export default function Signup() {
     const [activeStep, setActiveStep] = React.useState(0);
-    //const [skipped, setSkipped] = React.useState(new Set());
+    const [name, setName] = React.useState('');
+    const [contact, setContact] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [city, setCity] = React.useState('');
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
+
   
 
   
- 
-  
-    const handleNext = () => {  
-      setActiveStep((prevActiveStep) => prevActiveStep + 1);
 
-    };
+  
+
   
     const handleBack = () => {
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
@@ -57,34 +60,42 @@ export default function Login() {
     const handleReset = () => {
       setActiveStep(0);
     };
-  const handleSubmit = (event) => {
-    console.log("hnadle submit called")
+    
+  const handleSubmit1 = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
+    const data1 = new FormData(event.currentTarget);
     console.log({
-      name: data.get('name'),
-      contact: data.get('contact'),
-      email:data.get('email'),
-      city:data.get('city'),
-      username:data.get('username'),
-      password:data.get('password')
-
-
-
-    });}
-   {/*} var name=data.get('name')
-    var contact= data.get('contact')
-    var city= data.get('city')
-    var email= data.get('email')
-    var username=data.get('username')
-    var password= data.get('password')
-    axios.post('http://localhost:8000/login',
-    {
-        name:name
-        user: email,
-        pass: password
+      name: data1.get('name'),
+      contact: data1.get('contact'),
+      email: data1.get('email'),
+      city: data1.get('city'),
+    });
+    setName(data1.get('name'))
+    setContact(data1.get('contact'))
+    setEmail(data1.get('email'))
+    setCity(data1.get('city'))
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+  const handleSubmit2 = (event) => {
+    event.preventDefault();
+    const data2 = new FormData(event.currentTarget);
+    var pw =  data2.get('password')
+    var cpw = data2.get('cpassword')
+    console.log({
+      un: data2.get('username'),
+      pw: data2.get('password'),
+      cpw: data2.get('cpassword'),
+    });
+    setUsername(data2.get('username'))
+    if(pw==cpw){
+      setPassword(pw)
     }
-  );*/}
+    else{
+      window.alert('password mismatch')
+    }
+
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -160,22 +171,21 @@ export default function Login() {
       ) : (
         <React.Fragment>
           <Typography sx={{ mt: 2, mb: 1 }}>
-            
-          <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 0.5, display: 'flex',
+          <Box  sx={{ mt: 0.5, display: 'flex',
               flexDirection: 'column',
               alignItems: 'center', }}>
                 {activeStep ===0 ? (
         // JSX to render when the condition is true
-        <Box sx={{ mt: 0.5, display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center', }}>
+        <Box component="form" noValidate onSubmit={handleSubmit1} sx={{ mt: 0.5, display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center', }}>
             
             <TextField
                 margin="normal"
                 required
                 style = {{width: '120%'}}
                 id="name"
-                label="Name"
+                label="name"
                 name="name"
                 autoComplete="name"
                 autoFocus
@@ -186,8 +196,8 @@ export default function Login() {
                 required
                 style = {{width: '120%'}}
                 id="contact"
-                label="Contact"
-                name="Contact"
+                label="contact"
+                name="contact"
                 autoComplete="Contact"
                 size="small"
               />
@@ -196,7 +206,7 @@ export default function Login() {
                 required
                 style = {{width: '120%'}}
                 id="email"
-                label="Email Address"
+                label="email"
                 name="email"
                 autoComplete="email"
                 size="small"
@@ -206,19 +216,40 @@ export default function Login() {
                 required
                 style = {{width: '120%'}}
                 id="city"
-                label="City"
+                label="city"
                 name="city"
                 autoComplete="city"
                 size="small"
               />
-             
+              
+             <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
+            <Button
+              color="inherit"
+              disabled={activeStep === 0}
+              onClick={handleBack}
+              sx={{ mr: 1 }}
+            >
+              Back
+            </Button>
+            <Box sx={{ flex: '1 1 auto' }} />
+            
+
+            
+            <Button
+                type="submit"
+                variant="contained"
+              >
+                Next
+              </Button>
+            
+          </Box>
              
         </Box>
       ) : (
         
         <Box sx={{ mt: 1, display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center' }}>
+        alignItems: 'center', }}>
              <TextField
                 margin="normal"
                 required
@@ -265,7 +296,11 @@ export default function Login() {
              
               </Box>
       )}
-                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
+             
+              
+            </Box>
+            </Typography>
+          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
             <Button
               color="inherit"
               disabled={activeStep === 0}
@@ -278,18 +313,14 @@ export default function Login() {
             
 
             
-              {activeStep === 0 ?<Button variant="contained" onClick={handleNext}>Next</Button> : <Button
+            <Button
                 type="submit"
                 variant="contained"
               >
                 Sign In
-              </Button>}
+              </Button>
             
-          </Box>      
-              
-            </Box>
-            </Typography>
-
+          </Box>
         </React.Fragment>
       )}
     </Box>

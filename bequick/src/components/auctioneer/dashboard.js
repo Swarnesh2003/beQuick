@@ -89,7 +89,7 @@ export default function Dashboard() {
             style={{width:'12vw',height:'auto', marginLeft:25,marginRight:10}} />
             </Box>
             <Box sx={{marginLeft:6, display:'flex', alignItems:'center'}}>
-              <Typography sx={{color:'#454545',fontSize:'115%'}} >Dashboard</Typography>
+              <Typography sx={{color:'#454545',fontSize:'115%',display:'flex', alignItems:'center'}} >Dashboard</Typography>
             </Box>
             </Box>
 
