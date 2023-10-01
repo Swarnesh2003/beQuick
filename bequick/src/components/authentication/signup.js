@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+import axios from 'axios';
+axios.defaults.withCredentials = true;
 
 const steps = ['', ''];
 
@@ -35,23 +37,15 @@ const defaultTheme = createTheme();
 
 export default function Login() {
     const [activeStep, setActiveStep] = React.useState(0);
-    const [skipped, setSkipped] = React.useState(new Set());
+    //const [skipped, setSkipped] = React.useState(new Set());
   
 
   
-    const isStepSkipped = (step) => {
-      return skipped.has(step);
-    };
+ 
   
-    const handleNext = () => {
-      let newSkipped = skipped;
-      if (isStepSkipped(activeStep)) {
-        newSkipped = new Set(newSkipped.values());
-        newSkipped.delete(activeStep);
-      }
-  
+    const handleNext = () => {  
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
-      setSkipped(newSkipped);
+
     };
   
     const handleBack = () => {
@@ -64,13 +58,33 @@ export default function Login() {
       setActiveStep(0);
     };
   const handleSubmit = (event) => {
+    console.log("hnadle submit called")
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+      name: data.get('name'),
+      contact: data.get('contact'),
+      email:data.get('email'),
+      city:data.get('city'),
+      username:data.get('username'),
+      password:data.get('password')
+
+
+
+    });}
+   {/*} var name=data.get('name')
+    var contact= data.get('contact')
+    var city= data.get('city')
+    var email= data.get('email')
+    var username=data.get('username')
+    var password= data.get('password')
+    axios.post('http://localhost:8000/login',
+    {
+        name:name
+        user: email,
+        pass: password
+    }
+  );*/}
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -204,7 +218,7 @@ export default function Login() {
         
         <Box sx={{ mt: 1, display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center', }}>
+        alignItems: 'center' }}>
              <TextField
                 margin="normal"
                 required
@@ -251,11 +265,7 @@ export default function Login() {
              
               </Box>
       )}
-             
-              
-            </Box>
-            </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
+                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
             <Button
               color="inherit"
               disabled={activeStep === 0}
@@ -271,12 +281,15 @@ export default function Login() {
               {activeStep === 0 ?<Button variant="contained" onClick={handleNext}>Next</Button> : <Button
                 type="submit"
                 variant="contained"
-                onClick={handleNext}
               >
                 Sign In
               </Button>}
             
-          </Box>
+          </Box>      
+              
+            </Box>
+            </Typography>
+
         </React.Fragment>
       )}
     </Box>
