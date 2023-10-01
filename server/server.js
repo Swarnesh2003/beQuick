@@ -82,16 +82,5 @@ async function findOrCreateDocument(id){
     const document = await Document.findById(id);
     if(document) return document;
 return await Document.create({_id:id, data:defaultValue}) */}
-app.post('/upload', upload.single('image'), async (req, res) => {
-    try {
-      const { filename, path } = req.file;
-      const image = new Image({ filename, path });
-      await image.save();
-      res.status(200).json({ message: 'Image uploaded successfully' });
-    } catch (error) {
-      console.error('Error uploading image:', error);
-      res.status(500).json({ error: 'Image upload failed' });
-    }
-  });
 
 
