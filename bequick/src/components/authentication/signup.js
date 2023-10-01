@@ -13,6 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
+
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 
@@ -89,11 +90,26 @@ export default function Signup() {
     setUsername(data2.get('username'))
     if(pw==cpw){
       setPassword(pw)
+      axios.post('http://localhost:8000/signup',
+      {
+          name1: name,
+          contact1: contact,
+          email1:email,
+          city1:city,
+          username1:data2.get('username'),
+          password1:data2.get('password')
+  
+      }
+      ).then(function(response){
+          console.log(response)
+          window.location.replace('/user')
+      })
     }
     else{
       window.alert('password mismatch')
     }
 
+   
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
@@ -247,9 +263,10 @@ export default function Signup() {
         </Box>
       ) : (
         
-        <Box sx={{ mt: 1, display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center', }}>
+        <Box component="form" noValidate onSubmit={handleSubmit2} sx={{ mt: 0.5, display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center', }}>
+            
              <TextField
                 margin="normal"
                 required
@@ -293,14 +310,7 @@ export default function Signup() {
                   </Link>
                 </Grid>
               </Grid>
-             
-              </Box>
-      )}
-             
-              
-            </Box>
-            </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
+              <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3 }}>
             <Button
               color="inherit"
               disabled={activeStep === 0}
@@ -321,6 +331,15 @@ export default function Signup() {
               </Button>
             
           </Box>
+             
+             
+              </Box>
+      )}
+             
+             </Box>
+    
+            </Typography>
+          
         </React.Fragment>
       )}
     </Box>
