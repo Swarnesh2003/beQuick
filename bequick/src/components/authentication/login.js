@@ -38,7 +38,7 @@ export default function Login() {
     }
     ).then(function(response){
         console.log(response)
-        //window.location.replace('/user')
+        window.location.replace('/user')
     })
    
   };
