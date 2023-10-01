@@ -128,22 +128,25 @@ export default function Dashboard() {
           to="/auctioneer/dashboard/newauction" // Specify the target route
         />
      
-      <LinkTab sx={{textTransform: 'none'}} label={
+      <Tab sx={{textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center',  position:'absolute',left:'1.5vw'}}>
           
             <HourglassEmptyRoundedIcon /> {/* Replace with your desired icon */}
           
             <Typography sx={{marginLeft:2, fontSize:'115%'}}>Ongoing Auction</Typography>
         </div>
-      } href='/auctioneer/dashboard/ongoingauction'/>
-      <LinkTab sx={{textTransform: 'none'}} label={
+      }
+      component={Link}
+      to="/auctioneer/dashboard/ongoingauction"  />
+      <Tab sx={{textTransform: 'none'}} label={
         <div style={{display:'flex', alignItems: 'center', position:'absolute',left:'1.5vw'}}>
           
             < DownloadDoneRoundedIcon /> {/* Replace with your desired icon */}
           
             <Typography sx={{marginLeft:2, fontSize:'115%'}}>Closed Auctions</Typography>
         </div>
-      } href='/auctioneer/dashboard/closedauction'/>
+      }       component={Link}
+      to="/auctioneer/dashboard/closedauction"  />
         
         
         <LinkTab  sx={{textTransform: 'none'}}label={

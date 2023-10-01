@@ -8,9 +8,9 @@ import Dashboard from './components/auctioneer/dashboard'
 import Newauction from './components/auctioneer/newauction'
 import Ongoingauction from './components/auctioneer/ongoingauction'
 import Closedauction from './components/auctioneer/closedauction'
-import Transaction from './components/auctioneer/transaction'
+import Transaction from './components/auctioneer/Transaction'
 
-
+<title>beQuick</title>
 function App() {
   return (
     <Router>
