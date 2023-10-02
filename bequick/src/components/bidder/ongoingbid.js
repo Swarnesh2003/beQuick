@@ -103,21 +103,10 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Ongoingbid(){
     const items = [
-        {
-          id: 1,
-          title: 'Material Name ',
-          image: 'https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8QmlrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
-          subheader: 'Bids:2',
-          icon:'CheckCircleOutlineIcon',
-          content1:'Current Bid: Rs.50000',
-          content2:
-          'Ends in time',
-          content3:
-          'MylastBid:Rs.50000'
-        },
+     
         {
             id: 2,
-            title: 'Material Name ',
+            title: 'Ferrari ',
             image: 'https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2Fyc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
             subheader: 'Bids:3',
             icon:'TrendingUpIcon',
@@ -129,7 +118,7 @@ export default function Ongoingbid(){
           },
           {
             id: 3,
-            title: 'Material name ',
+            title: 'Mac Book Pro ',
             image: 'https://images.unsplash.com/photo-1588702547923-7093a6c3ba33?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxhcHRvcHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60',
             subheader: 'Bids:54',
             icon:'CheckCircleOutlineIcon',
