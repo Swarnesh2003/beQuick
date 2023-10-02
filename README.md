@@ -36,5 +36,47 @@ There are options like
       The user directly pay the payment to the auctioneer usign payment gateway in this section.It also contains the history of all the payments with the auctioneers.
       
 
+The project has been partially implemented now due to time constraints. It will be fully implemented in the upcoming days.
 
+
+The following dependencies must be installed in the bequick(react) directory for running the project (using npm i ).
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.11",
+    "@mui/material": "^5.14.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+
+The following dependencies must be installed in the server directory
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.11",
+    "@mui/material": "^5.14.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.16.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+
+To run the frontend:
+  cd bequick
+  npm start
+
+To run the backend:
+  cd server
+  nodemon server.js
+
+
+    
 
