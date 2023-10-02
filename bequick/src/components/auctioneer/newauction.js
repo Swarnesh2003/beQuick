@@ -1,19 +1,27 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-
+import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
+import axios from 'axios';
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
+
+axios.defaults.withCredentials = true;
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -23,70 +31,86 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 export default function Newauction(){
     const [category, setCategory] = React.useState('');
-    const itemData = [
-        {
-          img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-          title: 'Breakfast',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-          title: 'Burger',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-          title: 'Camera',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-          title: 'Coffee',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-          title: 'Hats',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-          title: 'Honey',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-          title: 'Basketball',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-          title: 'Fern',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-          title: 'Mushrooms',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-          title: 'Tomato basil',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-          title: 'Sea star',
-        },
-        {
-          img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-          title: 'Bike',
-        },
-      ];
+    const [itemData, setItemData] = useState([]);
+    const [imagePreview, setImagePreview] = useState(null); // State to store the image preview
+    const [open, setOpen] = React.useState(false);
+
+  
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+    const handleFileInputChange = (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+  
+      reader.onload = () => {
+        addItem(reader.result);
+        setImagePreview(reader.result); // Set the image preview state
+      };
+  
+      reader.readAsDataURL(file);
+    };
+  
+    // Function to add a new item to the array
+    const addItem = (newItem) => {
+      setItemData((prevItemData) => [...prevItemData, { img: newItem, title: '' }]);
+    };
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      const data = new FormData(event.currentTarget);
+      console.log({
+        name: data.get('name'),
+        category: data.get('demo-simple-select'),
+        startprice: data.get('startprice'),
+        time: data.get('time'),
+        reserve: data.get('reserve'),
+        maxbid: data.get('maxbid'),
+        desc:data.get('desc'),
+        img: imagePreview
+      });
+      axios.post('http://localhost:8000/auctioneer/newauction',
+      {
+          name: data.get('name'),
+        category: data.get('demo-simple-select'),
+        startprice: data.get('startprice'),
+        time: data.get('time'),
+        reserve: data.get('reserve'),
+        maxbid: data.get('maxbid'),
+        desc:data.get('desc'),
+        img: imagePreview
+      }
+      ).then(function(response){
+          console.log(response)
+          if(response.data.message=='true'){
+            setOpen(true);
+          }
+          
+      })
+    };
+  
+   
     const handleChange = (event) => {
       setCategory(event.target.value);
     };
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          // Handle the selected file here, e.g., upload it to a server.
-          console.log('Selected file:', file);
-        }
-      };
+
     return(
+      <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1, display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center', }}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Successfully Launched a new auction
+        </Alert>
+      </Snackbar>
     <Grid container spacing={2}>
+       
         <Grid item xs={12} md={7}>
-            <Item >
+            <Item>
                 <Grid container spacing={2}>
                     <Grid item xs={12} md={6} sx={{display:'flex', alignItems:'center', justifyContent:'center'}}>
                             <TextField
@@ -107,6 +131,7 @@ export default function Newauction(){
                             <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
+                            name="demo-simple-select"
                             margin="normal"
                             required 
                             value={category}
@@ -115,9 +140,9 @@ export default function Newauction(){
                             sx={{width:'80%'}}
                             size="small"
                             >
-                            <MenuItem value={10}>Ten</MenuItem>
-                            <MenuItem value={20}>Twenty</MenuItem>
-                            <MenuItem value={30}>Thirty</MenuItem>
+                            <MenuItem value={'Car'}>Car</MenuItem>
+                            <MenuItem value={'Furniture'}>Furniture</MenuItem>
+                            <MenuItem value={'Electronics'}>Electronis</MenuItem>
                             </Select>
                         </FormControl>
                     </Grid>
@@ -128,8 +153,7 @@ export default function Newauction(){
                                 required   
                                 id="startprice"
                                 label="Starting Price Bid"
-                                name="pricebid"
-                
+                                name="startprice"
                                 sx={{width:'80%'}}
                                 size="small"
                                 />
@@ -177,6 +201,8 @@ export default function Newauction(){
                         
                             <TextareaAutosize
                                     aria-label="description"
+                                    name="desc"
+                                    id="desc"
                                     minRows={10} // You can adjust this to set a minimum number of rows
                                     placeholder="Description"
                                     style={{ width: '98%',m:'0.1%', height:'34.5vh', resize:"none"}}/>
@@ -189,48 +215,37 @@ export default function Newauction(){
         
         <Grid item xs={12} md={5}>
         <Item >
-            <Grid container  sx={{height:'80.5vh'}}>
+            <Grid container  sx={{height:'78vh'}}>
                 <Grid item xs={4}>
                         <p>Images</p>
                 </Grid>
-                <Grid item xs={7} alignItems="center">
-                        <input
-                            accept=".jpg,.jpeg,.png,.pdf"
-                            style={{ display: 'none' }}
-                            id="file-upload"
-                            type="file"
-                            onChange={handleFileUpload}
-                            sx={{alignItems:"center",justifyContent:"center"}}
-                        />
-                        <label htmlFor="file-upload" sx={{alignItems:"center",justifyContent:"center"}}>
-                            <Button
-                            variant="contained"
-                            component="span"
-                            sx={{alignItems:"center",justifyContent:"center", height:"60%", width:"50%", fontSize:8}}
-                            startIcon={<CloudUploadIcon />}
-                            >
-                            Upload File
-                            </Button>
-                            <Typography variant="body2" color="textSecondary" sx={{fontSize:8}}>
-                            (JPEG, PNG, PDF supported)
-                            </Typography>
-                        </label>
-                        </Grid>
-                        <Grid item md={12} sx={{overflow:"auto", height:"70vh"}}>
-                        <ImageList sx={{ width: '98%', height: "100%" }} cols={3} rowHeight={164}>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+                <Grid item xs={7} alignItems="center" sx={{height:'64vh'}}>
+                <div>
+                        {/* Input for file selection */}
+                        <input type="file" onChange={handleFileInputChange} />
 
+                        {/* Display the image preview */}
+                        {imagePreview && (
+                          <img
+                            src={imagePreview}
+                            alt="Uploaded Preview"
+                            style={{ maxWidth: '100%', maxHeight: '200px' }}
+                          />
+                        )}
+
+                        {/* Render other components or elements */}
+                      </div>
+                                        
                         </Grid>
+                        
+                        <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{ width: '100%',height:"10%", mt: 3, mb: 2 }}
+              >
+                Launch Auction
+              </Button>
                 </Grid>
         </Item>
         </Grid>
@@ -247,7 +262,8 @@ export default function Newauction(){
       </div>
     </Grid>*/}
   
-
+    
     </Grid>
+    </Box>
     )
 }

@@ -102,7 +102,7 @@ export default function Signup() {
       }
       ).then(function(response){
           console.log(response)
-          window.location.replace('/user')
+          window.location.replace('/login')
       })
     }
     else{

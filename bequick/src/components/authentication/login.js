@@ -3,7 +3,7 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-
+import {Navigate, resolvePath} from 'react-router-dom'
 import Link from '@mui/material/Link';
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
@@ -11,9 +11,10 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
+import {useEffect, useState } from "react";
 import axios from 'axios';
-axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true
+
 
 
 
@@ -22,6 +23,15 @@ axios.defaults.withCredentials = true;
 const defaultTheme = createTheme();
 
 export default function Login() {
+  useEffect(()=>{
+    axios.get('http://localhost:8000/getDet')
+        .then(function(response){
+            var data = response.data
+            if(data.message=='true'){
+                window.location.replace('/user')
+            }
+        })
+}, []);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -38,7 +48,13 @@ export default function Login() {
     }
     ).then(function(response){
         console.log(response)
-        window.location.replace('/user')
+        var data= response.data
+        if(data.message==='true'){
+       window.location.replace('/user')}
+       else{
+        window.alert("Wrong credentials")
+        return <Navigate to ="/login" replace />
+       }
     })
    
   };
