@@ -50,7 +50,7 @@ export default function User(){
             </Box>
             <Box>
             <a href="/auctioneer/dashboard"><Button sx={{m:3,height:45,width:110}}  variant="contained">Auctioneer</Button></a> 
-            <a href="/bidder"><Button sx={{m:3,height:45,width:110}} variant="contained">Bidder</Button></a>
+            <a href="/bidder/dashboard1"><Button sx={{m:3,height:45,width:110}} variant="contained">Bidder</Button></a>
             </Box>
             <Copyright sx={{ mt: 5 }} />
             <img 
