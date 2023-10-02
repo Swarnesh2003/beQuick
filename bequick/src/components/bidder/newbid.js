@@ -225,22 +225,19 @@ export default function Newbid(){
         </IconButton>
         <DialogContent dividers>
           <Typography gutterBottom>
-            Item Name:xxx
+            Item Name:Ferrari
           </Typography>
           <Typography gutterBottom>
-            Category:xxx
+            Category:Car
           </Typography>
           <Typography gutterBottom>
-            Starting Price Bid:xxx
+            Starting Price Bid: 45000
           </Typography>
           <Typography gutterBottom>
-            Reserve Price:xxx
+            Reserve Price:5000
           </Typography>
           <Typography gutterBottom>
-            Maximum Bid:xxx
-          </Typography>
-          <Typography gutterBottom>
-            Current Bid:xxx
+            Current Bid:55000
           </Typography>
           <TextField
                                 margin="normal"
